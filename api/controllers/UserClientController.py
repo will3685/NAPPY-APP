@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-# from rest_framework.serializers import Serializer
+from rest_framework.serializers import Serializer
 from rest_framework.views import APIView
 from rest_framework import generics, status
 from rest_framework.response import Response
@@ -25,6 +25,12 @@ class UserClientList(APIView):
       serializer.is_valid(raise_exception=True)
       serializer.save()
       return Response(serializer.data)
+
+class UserClientDetail(APIView):
+  def get(self,request, id):
+    userclient = get_object_or_404(UserClient, id=id)
+    serializer = UserClientSerializer(userclient).data
+    return Response(serializer)
 
 
 

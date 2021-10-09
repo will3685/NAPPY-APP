@@ -5,3 +5,9 @@ class UserClientSerializer(serializers.ModelSerializer):
   class Meta:
     model = UserClient
     fields = '__all__'
+    
+class HairCategorySerializer(serializers.ModelSerializer):
+  class Meta:
+    model = HairCategory
+    fields = '__all__'
+  
