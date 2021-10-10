@@ -10,4 +10,14 @@ class HairCategorySerializer(serializers.ModelSerializer):
   class Meta:
     model = HairCategory
     fields = '__all__'
-  
+
+class HairSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Hair
+    fields = '__all__'
+
+class HairCategoryHairSerializer(serializers.ModelSerializer):
+  hairs = HairSerializer(many=True, read_only=True)
+  class Meta:
+    model = HairCategory
+    fields = '__all__'

@@ -14,6 +14,9 @@ class HairCategoryList(APIView):
   def post(self, request):
         # name = request.data["name"]
         # description = request.data["description"]
+        # haircategory = HairCategory( name=name, description=description)
+        # description.save()
+        # serializer = HairCategorySerializer(haircategory).data
 
       serializer = HairCategorySerializer(data=request.data)
       serializer.is_valid(raise_exception=True)
@@ -24,4 +27,10 @@ class HairCategoryDetail(APIView):
   def get(self,request, id):
     haircategory = get_object_or_404(HairCategory, id=id)
     serializer = HairCategorySerializer(haircategory).data
+    return Response(serializer)
+
+class HairCategoryHairDetail(APIView):
+  def get(self, request, id):
+    haircategory = get_object_or_404(HairCategory, id=id)
+    serializer =HairCategoryHairSerializer(haircategory).data
     return Response(serializer)
