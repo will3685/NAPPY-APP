@@ -29,8 +29,9 @@ class HairCategoryDetail(APIView):
     serializer = HairCategorySerializer(haircategory).data
     return Response(serializer)
 
-class HairCategoryHairDetail(APIView):
+class UniqueCategoryDetail(APIView):
   def get(self, request, id):
     haircategory = get_object_or_404(HairCategory, id=id)
-    serializer =HairCategoryHairSerializer(haircategory).data
+    serializer = UniqueCategorySerializer(haircategory).data
     return Response(serializer)
+

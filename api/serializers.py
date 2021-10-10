@@ -16,7 +16,7 @@ class HairSerializer(serializers.ModelSerializer):
     model = Hair
     fields = '__all__'
 
-class HairCategoryHairSerializer(serializers.ModelSerializer):
+class UniqueCategorySerializer(serializers.ModelSerializer):
   hairs = HairSerializer(many=True, read_only=True)
   class Meta:
     model = HairCategory
