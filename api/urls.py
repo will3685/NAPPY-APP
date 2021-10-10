@@ -3,10 +3,16 @@ from .views import *
 from api import views
 
 urlpatterns = [
-  path("userclient/", UserClientList.as_view()),
-  path("userclient/<int:id>/", UserClientDetail.as_view()),
+  # path("userclient/", UserClientList.as_view()),
+  path("userhost/", UserHostList.as_view()),
+  # path("userclient/<int:id>/", UserClientDetail.as_view()),
+  path("userhost/<int:id>/", UserHostDetail.as_view()),
   path("haircategory/", HairCategoryList.as_view()),
   path("haircategory/<int:id>/", HairCategoryDetail.as_view()),
   path("hairs/", HairList.as_view()),
-  path("haircategory/<int:id>/hairs/", UniqueCategoryDetail.as_view()),
+  path("haircategory/<int:id>/hairs/", UniqueCategoryHairDetail.as_view()),
+  path("bookcategory/", BookCategoryList.as_view()),
+  path("book/", BookList.as_view()),
+  path("userhost/<int:id>/books/", UniqueCategoryBookDetail.as_view()),
+  # path("appointments/", AppointmentList.as_view()),
 ]

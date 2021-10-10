@@ -6,10 +6,10 @@ from rest_framework.response import Response
 from api.models import *
 from api.serializers import *
 
-class HairCategoryList(APIView):
+class BookList(APIView):
   def get(self, request):
-      haircategory = HairCategory.objects.all()
-      data = HairCategorySerializer(haircategory, many=True).data
+      books = Book.objects.all()
+      data = BookSerializer(books, many=True).data
       return Response(data)
   def post(self, request):
         # name = request.data["name"]
@@ -18,20 +18,8 @@ class HairCategoryList(APIView):
         # description.save()
         # serializer = HairCategorySerializer(haircategory).data
 
-      serializer = HairCategorySerializer(data=request.data)
+      serializer = BookSerializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
       return Response(serializer.data)
-
-class HairCategoryDetail(APIView):
-  def get(self,request, id):
-    haircategory = get_object_or_404(HairCategory, id=id)
-    serializer = HairCategorySerializer(haircategory).data
-    return Response(serializer)
-
-class UniqueCategoryHairDetail(APIView):
-  def get(self, request, id):
-    haircategory = get_object_or_404(HairCategory, id=id)
-    serializer = UniqueCategoryHairSerializer(haircategory).data
-    return Response(serializer)
 
